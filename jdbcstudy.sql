@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 80029
 File Encoding         : 65001
 
-Date: 2022-06-27 11:46:54
+Date: 2022-06-28 21:35:10
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -85,7 +85,6 @@ INSERT INTO `comment` VALUES ('19', '2', '房子好评', '5', null, '2022-06-20 
 INSERT INTO `comment` VALUES ('20', '2', '啊大多数', '6', null, '2022-06-22 14:15:29');
 INSERT INTO `comment` VALUES ('21', '2', 'adas', '6', null, '2022-06-22 14:17:33');
 INSERT INTO `comment` VALUES ('22', '2', 'eqe', '6', null, '2022-06-23 14:18:20');
-INSERT INTO `comment` VALUES ('23', '1', 'dsdsd', '16', null, '2022-06-23 14:18:51');
 INSERT INTO `comment` VALUES ('24', '78', '很好', '1', null, '2022-06-24 16:11:31');
 INSERT INTO `comment` VALUES ('25', '79', 'kkk', '4', null, '2022-06-24 16:26:40');
 INSERT INTO `comment` VALUES ('26', '2', 'bjbbbhjjh', '6', null, '2022-06-25 16:45:12');
@@ -129,15 +128,42 @@ CREATE TABLE `department_info` (
   `update_time` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE KEY `uqe_status` (`department`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb3 ROW_FORMAT=DYNAMIC COMMENT='部门信息表';
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb3 ROW_FORMAT=DYNAMIC COMMENT='部门信息表';
 
 -- ----------------------------
 -- Records of department_info
 -- ----------------------------
+INSERT INTO `department_info` VALUES ('0', '管理员', '最高权限者', '2022-06-28 16:39:52', '2022-06-28 16:40:11');
 INSERT INTO `department_info` VALUES ('1', '技术部', '技术开发', '2022-01-02 23:42:43', '2022-01-04 15:34:11');
 INSERT INTO `department_info` VALUES ('2', '财务部', '管理财务信息', '2022-01-03 20:27:40', '2022-01-03 20:27:40');
 INSERT INTO `department_info` VALUES ('3', '保安部', '保卫工作', '2022-01-03 20:27:52', '2022-01-07 15:57:55');
 INSERT INTO `department_info` VALUES ('4', '厨务部', '厨师工作', '2022-01-03 20:28:25', '2022-01-07 15:48:35');
+INSERT INTO `department_info` VALUES ('5', '客房部', '管理客房/清洁客房', '2022-06-28 16:43:48', '2022-06-28 16:43:51');
+INSERT INTO `department_info` VALUES ('6', '维修部', '维修客房设施', '2022-06-28 16:44:20', '2022-06-29 16:44:24');
+INSERT INTO `department_info` VALUES ('7', '客服部', '投诉/反馈处理', '2022-06-27 16:44:53', '2022-06-28 16:44:57');
+INSERT INTO `department_info` VALUES ('8', '前台', '接待客户', '2022-06-28 16:20:19', '2022-06-28 16:45:27');
+
+-- ----------------------------
+-- Table structure for facilities_info
+-- ----------------------------
+DROP TABLE IF EXISTS `facilities_info`;
+CREATE TABLE `facilities_info` (
+  `facilities_name` varchar(20) NOT NULL,
+  `facilities_id` varchar(20) NOT NULL,
+  `facilities_type` varchar(10) NOT NULL,
+  `facilities_number` int NOT NULL,
+  `facilities_status` varchar(10) NOT NULL,
+  PRIMARY KEY (`facilities_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- ----------------------------
+-- Records of facilities_info
+-- ----------------------------
+INSERT INTO `facilities_info` VALUES ('空调', '1', '电器', '1', '正常');
+INSERT INTO `facilities_info` VALUES ('台灯', '2', '电器', '4', '正常');
+INSERT INTO `facilities_info` VALUES ('床头柜', '3', '家具', '2', '正常');
+INSERT INTO `facilities_info` VALUES ('电视', '4', '电器', '1', '维修中');
+INSERT INTO `facilities_info` VALUES ('淋浴头', '5', '浴室具物', '1', '正常');
 
 -- ----------------------------
 -- Table structure for feedback
@@ -303,7 +329,7 @@ CREATE TABLE `hotel_info` (
 -- ----------------------------
 -- Records of hotel_info
 -- ----------------------------
-INSERT INTO `hotel_info` VALUES ('1', '嘉丽酒店', '13555600848', '13555600848', '892754472@qq.com', '广东省江门市蓬江区东城村五邑大学', 'https://gitee.com/huangsr', '2021-12-19 10:46:48', '2022-01-06 20:00:25');
+INSERT INTO `hotel_info` VALUES ('1', '艾迪花园酒店', '13555600848', '13555600848', '892754472@qq.com', '江西省南昌市前湖大道696号南昌航空大学', 'https://localhost:8090/', '2022-06-19 10:46:48', '2022-07-02 20:00:25');
 
 -- ----------------------------
 -- Table structure for hotel_maintenance_staff
@@ -406,19 +432,19 @@ INSERT INTO `order_info` VALUES ('14', '1477838106440278016', '2', '官网预订
 INSERT INTO `order_info` VALUES ('15', '1477842857429049344', '2', '官网预订', '4', '郭玉英', '13555600848', '3', '总统房', '1', '2022-01-03', '2', '1', '200', '2022-01-13 23:30:34', '2022-01-13 23:30:34');
 INSERT INTO `order_info` VALUES ('16', '1478563594167197696', '2', '官网预订', '1', '张波', '13555600848', '1', '单人房', '1', '2022-01-05', '2', '2', '400', '2022-01-13 23:30:34', '2022-01-13 23:30:34');
 INSERT INTO `order_info` VALUES ('17', '1478995561929084928', '2', '官网预订', '1', '陈桂英', '13555600848', '2', '豪华套房', '1', '2022-01-07', '6', '1', '1800', '2022-01-13 23:30:34', '2022-01-13 23:30:34');
-INSERT INTO `order_info` VALUES ('18', '1479358293647859712', '2', '官网预订', '1', '郭慧', '13555600848', '2', '豪华套房', '1', '2022-01-07', '5', '0', '1500', '2022-01-13 23:30:34', '2022-01-13 23:30:34');
+INSERT INTO `order_info` VALUES ('18', '1479358293647859712', '3', '小程序预订', '1', '郭慧', '13555600848', '2', '豪华套房', '1', '2022-01-07', '5', '0', '1500', '2022-06-28 16:46:22', '2022-06-28 16:46:22');
 INSERT INTO `order_info` VALUES ('19', '1479358940933885952', '2', '官网预订', '1', '王兰英', '13555600848', '3', 'tests', '1', '2022-01-07', '4', '0', '400', '2022-01-13 23:30:34', '2022-01-13 23:30:34');
 INSERT INTO `order_info` VALUES ('20', '1481601445624549376', '2', '官网预订', '1', '张丽丽', '13555600848', '3', '总统房', '1', '2022-01-13', '2', '-1', '2400', '2022-01-13 23:30:34', '2022-01-13 23:30:34');
 INSERT INTO `order_info` VALUES ('21', '1481603261284225024', '2', '官网预订', '1', '陈红', '13555600848', '3', '总统房', '1', '2022-01-13', '2', '-1', '2400', '2022-01-13 23:30:34', '2022-01-13 23:30:34');
-INSERT INTO `order_info` VALUES ('22', '1481605869118017536', '2', '官网预订', '1', '范凤英', '13555600848', '3', '总统房', '1', '2022-01-13', '2', '-1', '2400', '2022-01-13 23:30:34', '2022-01-13 23:30:34');
+INSERT INTO `order_info` VALUES ('22', '1481605869118017536', '1', '前台预订', '1', '范凤英', '13555600848', '3', '总统房', '1', '2022-01-13', '2', '-1', '2400', '2022-06-28 16:46:29', '2022-06-28 16:46:29');
 INSERT INTO `order_info` VALUES ('23', '1481608232495071232', '2', '官网预订', '1', '张兵', '13555600848', '3', '总统房', '1', '2022-01-13', '2', '1', '2400', '2022-01-13 23:30:34', '2022-01-13 23:30:34');
 INSERT INTO `order_info` VALUES ('24', '1481608768220938240', '2', '官网预订', '2', '黄宁', '13555600848', '2', '豪华套房', '1', '2022-01-13', '2', '-1', '1000', '2022-01-13 23:30:34', '2022-01-13 23:30:34');
-INSERT INTO `order_info` VALUES ('25', '1481608925029187584', '2', '官网预订', '2', '黄荣', '13555600848', '2', '豪华套房', '1', '2022-01-13', '1', '1', '500', '2022-01-13 23:30:34', '2022-01-13 23:30:34');
+INSERT INTO `order_info` VALUES ('25', '1481608925029187584', '3', '小程序预订', '2', '黄荣', '13555600848', '2', '豪华套房', '1', '2022-01-13', '1', '1', '500', '2022-06-28 16:46:16', '2022-06-28 16:46:16');
 INSERT INTO `order_info` VALUES ('26', '1481609442300116992', '2', '官网预订', '2', '周雷', '13555600848', '1', '单人房', '1', '2022-01-13', '2', '-1', '400', '2022-01-13 23:30:34', '2022-01-13 23:30:34');
 INSERT INTO `order_info` VALUES ('27', '1481609735729430528', '2', '官网预订', '2', '周静', '13555600848', '1', '单人房', '1', '2022-01-13', '1', '2', '200', '2022-01-13 23:30:34', '2022-01-13 23:30:34');
 INSERT INTO `order_info` VALUES ('28', '1481901941673541632', '2', '官网预订', '78', '梁恒森', '13555600848', '2', '豪华套房', '1', '2022-01-14', '1', '1', '500', '2022-01-14 16:12:38', '2022-01-14 16:12:38');
 INSERT INTO `order_info` VALUES ('29', '1481905718572990464', '2', '官网预订', '79', 'kk', '123432423', '5', '情侣房', '1', '2022-01-19', '2', '1', '200', '2022-01-14 16:27:44', '2022-01-14 16:27:44');
-INSERT INTO `order_info` VALUES ('30', '1481908392106246144', '2', '官网预订', '80', '绍荣', '13555600848', '1', '单人房', '1', '2022-01-14', '3', '1', '600', '2022-01-14 16:38:20', '2022-01-14 16:38:20');
+INSERT INTO `order_info` VALUES ('30', '1481908392106246144', '1', '前台预订', '80', '绍荣', '13555600848', '1', '单人房', '1', '2022-01-14', '3', '1', '600', '2022-06-28 16:46:08', '2022-06-28 16:46:08');
 
 -- ----------------------------
 -- Table structure for order_type
@@ -436,8 +462,9 @@ CREATE TABLE `order_type` (
 -- ----------------------------
 -- Records of order_type
 -- ----------------------------
-INSERT INTO `order_type` VALUES ('1', '手机预定', '支持在线', '2021-12-19 11:10:11', '2022-01-07 15:49:31');
-INSERT INTO `order_type` VALUES ('2', '官网预定', '通过官网网址进行预定', '2021-12-29 17:11:18', '2022-01-07 15:50:15');
+INSERT INTO `order_type` VALUES ('1', '前台预订', '到酒店前台现场预订', '2021-12-19 11:10:11', '2022-06-28 16:48:30');
+INSERT INTO `order_type` VALUES ('2', '官网预订', '通过官网网址进行预订', '2021-12-29 17:11:18', '2022-06-28 16:48:33');
+INSERT INTO `order_type` VALUES ('3', '小程序预订', '扫码进入小程序进行预订', '2021-12-01 16:47:40', '2022-01-01 16:47:49');
 
 -- ----------------------------
 -- Table structure for room
@@ -577,14 +604,13 @@ CREATE TABLE `room_type` (
 -- ----------------------------
 -- Records of room_type
 -- ----------------------------
-INSERT INTO `room_type` VALUES ('1', '单人房', '一张床的房间', '200', '20', '12', 'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fphoto.tuchong.com%2F10228072%2Ff%2F812782648.jpg&refer=http%3A%2F%2Fphoto.tuchong.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1643989163&t=133ceb86ab5f983acbcf1aa0828ea71d', '4', '1.5m*1.8m', '3', '0', '2022-06-19 10:44:44', '2022-06-27 09:35:56');
-INSERT INTO `room_type` VALUES ('2', '豪华套房', '宽敞', '500', '21', '2', 'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fn1-q.mafengwo.net%2Fs14%2FM00%2F6A%2F1C%2FwKgE2lz8zF2AJREqAB0qRb3k_rs53.jpeg&refer=http%3A%2F%2Fn1-q.mafengwo.net&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1643989163&t=766a5592dcca472fbc0b58d991d9d3be', '2', '12', '1', '0', '2022-06-20 17:53:13', '2022-06-27 09:44:29');
-INSERT INTO `room_type` VALUES ('3', '总统房', '豪华大房', '1200', '21', '2', 'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fphoto.tuchong.com%2F10228072%2Ff%2F812782648.jpg&refer=http%3A%2F%2Fphoto.tuchong.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1643989163&t=133ceb86ab5f983acbcf1aa0828ea71d', '2', '12', '0', '1', '2022-06-18 17:53:13', '2022-06-27 09:35:56');
-INSERT INTO `room_type` VALUES ('4', '双人房', '多人共住', '120', '21', '2', 'https://gimg2.baidu.com/image_search/src=http%3A%2F%2F5b0988e595225.cdn.sohucs.com%2Fimages%2F20200115%2F558985fb4cd441df913a69fa7e0451ac.jpeg&refer=http%3A%2F%2F5b0988e595225.cdn.sohucs.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1643989464&t=859d3357a7b1b12d06631f500965ff51', '3', '12', '2', '0', '2022-06-23 17:53:13', '2022-06-27 09:35:56');
-INSERT INTO `room_type` VALUES ('5', '情侣房', '情人住房3', '100', '21', '2', 'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fdingyue.ws.126.net%2F2020%2F0413%2F52d40e48j00q8pt5v000zc000hs00bvm.jpg&refer=http%3A%2F%2Fdingyue.ws.126.net&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1643989464&t=a0d31c2346e90191e5dad5c5a60b45c9', '5', '12', '1', '0', '2022-06-17 17:53:13', '2022-06-27 09:35:56');
-INSERT INTO `room_type` VALUES ('6', '商务大床房', '商务大床房', '100', '21', '2', 'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fdingyue.ws.126.net%2F2020%2F0413%2F52d40e48j00q8pt5v000zc000hs00bvm.jpg&refer=http%3A%2F%2Fdingyue.ws.126.net&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1643989464&t=a0d31c2346e90191e5dad5c5a60b45c9', '5', '12', '0', '1', '2022-06-19 17:53:13', '2022-06-27 09:35:56');
-INSERT INTO `room_type` VALUES ('7', '豪华大床房', '豪华大床房', '100', '21', '2', 'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fdingyue.ws.126.net%2F2020%2F0413%2F52d40e48j00q8pt5v000zc000hs00bvm.jpg&refer=http%3A%2F%2Fdingyue.ws.126.net&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1643989464&t=a0d31c2346e90191e5dad5c5a60b45c9', '5', '12', '0', '0', '2022-06-21 17:53:13', '2022-06-27 09:35:56');
-INSERT INTO `room_type` VALUES ('16', 'zhea', '1231', '100', '12', '1233', 'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fwww.hx116.com%2Fuserfiles%2F20200327%2F42059.png&refer=http%3A%2F%2Fwww.hx116.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1644740207&t=78dc11c871cc40ac603ccf022bc61762', '1', '123', '0', '1', '2022-06-22 20:15:22', '2022-06-27 09:35:56');
+INSERT INTO `room_type` VALUES ('1', '单人房', '一张床的房间', '200', '20', '20', 'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fphoto.tuchong.com%2F10228072%2Ff%2F812782648.jpg&refer=http%3A%2F%2Fphoto.tuchong.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1643989163&t=133ceb86ab5f983acbcf1aa0828ea71d', '50', '1.5m*1.8m', '3', '0', '2022-06-19 10:44:44', '2022-06-28 21:21:21');
+INSERT INTO `room_type` VALUES ('2', '豪华套房', '宽敞', '500', '21', '40', 'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fn1-q.mafengwo.net%2Fs14%2FM00%2F6A%2F1C%2FwKgE2lz8zF2AJREqAB0qRb3k_rs53.jpeg&refer=http%3A%2F%2Fn1-q.mafengwo.net&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1643989163&t=766a5592dcca472fbc0b58d991d9d3be', '5', '12', '1', '0', '2022-06-20 17:53:13', '2022-06-28 21:21:25');
+INSERT INTO `room_type` VALUES ('3', '总统房', '豪华大房', '3000', '21', '66', 'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fphoto.tuchong.com%2F10228072%2Ff%2F812782648.jpg&refer=http%3A%2F%2Fphoto.tuchong.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1643989163&t=133ceb86ab5f983acbcf1aa0828ea71d', '2', '12', '0', '1', '2022-06-18 17:53:13', '2022-06-28 21:21:29');
+INSERT INTO `room_type` VALUES ('4', '双人房', '多人共住', '300', '21', '30', 'https://gimg2.baidu.com/image_search/src=http%3A%2F%2F5b0988e595225.cdn.sohucs.com%2Fimages%2F20200115%2F558985fb4cd441df913a69fa7e0451ac.jpeg&refer=http%3A%2F%2F5b0988e595225.cdn.sohucs.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1643989464&t=859d3357a7b1b12d06631f500965ff51', '31', '12', '2', '0', '2022-06-23 17:53:13', '2022-06-28 21:21:35');
+INSERT INTO `room_type` VALUES ('5', '情侣房', '情人住房3', '666', '21', '45', 'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fdingyue.ws.126.net%2F2020%2F0413%2F52d40e48j00q8pt5v000zc000hs00bvm.jpg&refer=http%3A%2F%2Fdingyue.ws.126.net&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1643989464&t=a0d31c2346e90191e5dad5c5a60b45c9', '25', '12', '1', '0', '2022-06-17 17:53:13', '2022-06-28 21:21:42');
+INSERT INTO `room_type` VALUES ('6', '商务大床房', '商务大床房', '1000', '21', '38', 'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fdingyue.ws.126.net%2F2020%2F0413%2F52d40e48j00q8pt5v000zc000hs00bvm.jpg&refer=http%3A%2F%2Fdingyue.ws.126.net&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1643989464&t=a0d31c2346e90191e5dad5c5a60b45c9', '34', '12', '0', '1', '2022-06-19 17:53:13', '2022-06-28 21:21:50');
+INSERT INTO `room_type` VALUES ('7', '豪华大床房', '豪华大床房', '2000', '21', '50', 'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fdingyue.ws.126.net%2F2020%2F0413%2F52d40e48j00q8pt5v000zc000hs00bvm.jpg&refer=http%3A%2F%2Fdingyue.ws.126.net&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1643989464&t=a0d31c2346e90191e5dad5c5a60b45c9', '10', '12', '0', '0', '2022-06-21 17:53:13', '2022-06-28 21:21:59');
 
 -- ----------------------------
 -- Table structure for user
